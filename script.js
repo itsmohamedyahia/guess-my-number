@@ -63,6 +63,9 @@ function properMsg() {
 function heading(heading) {
   document.querySelector('h1').textContent = heading;
 }
+function audioPlay(audio) {
+  document.getElementById(audio).play();
+}
 //primary function calls
 randomNum();
 //variable presentation
@@ -72,6 +75,9 @@ displayHighS(highscore);
 //
 console.log(random);
 //game logic
+document.addEventListener('click', function () {
+  audioPlay('audio');
+});
 document.querySelector('.check').addEventListener('click', function () {
   guess = Number(document.querySelector('.guess').value);
   // no input
@@ -90,7 +96,7 @@ document.querySelector('.check').addEventListener('click', function () {
       highscore = score;
       displayHighS(highscore);
     }
-
+    audioPlay('audio-win');
     //wrong
   } else if (guess !== random) {
     score--;
@@ -101,6 +107,7 @@ document.querySelector('.check').addEventListener('click', function () {
       displayMsg('📛 GAME OVER');
       heading('L0SER HAHA 🤣 L00K AT YOU 🤣 CANT EVEN GUESS A NUMBER');
       displayScore(score);
+      audioPlay('audio-lose');
     }
   }
 });
