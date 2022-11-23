@@ -124,6 +124,7 @@ document.querySelector('.again').addEventListener('click', function () {
   resetInput();
   displayScore(score);
   displayMsg('Start guessing...');
+  heading('GUESS MY NUMBER!');
   secretBoxContent('?');
   //style
   bgColor('#222');
