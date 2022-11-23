@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 //variable declaration
 let random;
-let score = 20;
+let score = 6;
 let highscore = 0;
 let guess;
 
@@ -105,7 +105,7 @@ document.querySelector('.check').addEventListener('click', function () {
 document.querySelector('.again').addEventListener('click', function () {
   //variables
   randomNum();
-  score = 20;
+  score = 6;
   //html
   resetInput();
   displayScore(score);
