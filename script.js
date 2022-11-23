@@ -63,8 +63,9 @@ function properMsg() {
 function heading(heading) {
   document.querySelector('h1').textContent = heading;
 }
-function audioPlay(audio) {
+function audioPlay(audio, volume) {
   document.getElementById(audio).play();
+  document.getElementById(audio).volume = volume;
 }
 //primary function calls
 randomNum();
@@ -76,10 +77,10 @@ displayHighS(highscore);
 console.log(random);
 //game logic
 document.addEventListener('click', function () {
-  audioPlay('audio');
+  audioPlay('audio', 0.5);
 });
 document.querySelector('.check').addEventListener('click', function () {
-  audioPlay('button');
+  audioPlay('button', 1);
   guess = Number(document.querySelector('.guess').value);
   // no input
   if (!guess) {
@@ -97,7 +98,7 @@ document.querySelector('.check').addEventListener('click', function () {
       highscore = score;
       displayHighS(highscore);
     }
-    audioPlay('audio-win');
+    audioPlay('audio-win', 1);
     //wrong
   } else if (guess !== random) {
     if (score > 0) score--;
@@ -108,7 +109,7 @@ document.querySelector('.check').addEventListener('click', function () {
       displayMsg('📛 GAME OVER');
       heading('L0SER HAHA 🤣 L00K AT YOU 🤣 CANT EVEN GUESS A NUMBER');
       displayScore(score);
-      audioPlay('audio-lose');
+      audioPlay('audio-lose', 1);
     }
   }
 });
@@ -116,7 +117,7 @@ document.querySelector('.check').addEventListener('click', function () {
 // AGAIN LOGIC
 
 document.querySelector('.again').addEventListener('click', function () {
-  audioPlay('button');
+  audioPlay('button', 0.5);
   //variables
   randomNum();
   score = 6;
