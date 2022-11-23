@@ -100,10 +100,10 @@ document.querySelector('.check').addEventListener('click', function () {
     audioPlay('audio-win');
     //wrong
   } else if (guess !== random) {
+    if (score > 0) score--;
     if (score > 0) {
       displayMsg(properMsg());
       displayScore(score);
-      score--;
     } else {
       displayMsg('📛 GAME OVER');
       heading('L0SER HAHA 🤣 L00K AT YOU 🤣 CANT EVEN GUESS A NUMBER');
