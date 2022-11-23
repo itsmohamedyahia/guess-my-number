@@ -79,6 +79,7 @@ document.addEventListener('click', function () {
   audioPlay('audio');
 });
 document.querySelector('.check').addEventListener('click', function () {
+  audioPlay('button');
   guess = Number(document.querySelector('.guess').value);
   // no input
   if (!guess) {
@@ -115,6 +116,7 @@ document.querySelector('.check').addEventListener('click', function () {
 // AGAIN LOGIC
 
 document.querySelector('.again').addEventListener('click', function () {
+  audioPlay('button');
   //variables
   randomNum();
   score = 6;
