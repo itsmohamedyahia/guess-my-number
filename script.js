@@ -11,7 +11,7 @@
 let random;
 let score = 20;
 let highscore = 0;
-let guessInput = document.querySelector('.guess').value;
+let guess;
 
 //function declaration and primary function calls
 function displayMsg(message) {
@@ -21,7 +21,7 @@ function displayScore(score) {
   document.querySelector('.score').textContent = score;
 }
 function randomNum() {
-  random = Math.trunc(Math.random() * 20) + 1;
+  random = Math.trunc(Math.random() * 50) + 1;
 }
 function displayScore(score) {
   document.querySelector('.score').textContent = score;
@@ -41,15 +41,36 @@ function secretBoxContent(content) {
 function resetInput() {
   document.querySelector('.guess').value = '';
 }
+function properMsg() {
+  const high = 'High number';
+  const low = 'Low number';
+  const diff = Math.abs(guess - random);
+  switch (true) {
+    case diff >= 25:
+      return guess > random ? `⏫ Really ${high} ` : `⏬ Really ${low} `;
+    case diff >= 10:
+      return guess > random ? `🔼 ${high}` : `🔽 ${low}`;
+    case diff >= 5:
+      return guess > random
+        ? `💧 Close but still a ${high} 🔼`
+        : `💧 Close but still ${low} 🔽`;
+    default:
+      return guess > random
+        ? `🔥 Really close but still a ${high} 🔼`
+        : `🔥 Really close but still a ${low} 🔽`;
+  }
+}
 //primary function calls
 randomNum();
 //variable presentation
 displayScore(score);
 displayHighS(highscore);
 
+//
+console.log(random);
 //game logic
 document.querySelector('.check').addEventListener('click', function () {
-  const guess = Number(document.querySelector('.guess').value);
+  guess = Number(document.querySelector('.guess').value);
   // no input
   if (!guess) {
     displayMsg('🚫 No Number');
@@ -66,11 +87,11 @@ document.querySelector('.check').addEventListener('click', function () {
       displayHighS(highscore);
     }
 
-    //higher
+    //wrong
   } else if (guess !== random) {
     score--;
     if (score > 0) {
-      displayMsg(guess > random ? 'High Number !' : 'Low Number');
+      displayMsg(properMsg());
       displayScore(score);
     } else {
       displayMsg('YOu lost the game');
