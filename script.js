@@ -60,6 +60,9 @@ function properMsg() {
         : `🔥 Really close but still a ${low} 🔽`;
   }
 }
+function heading(heading) {
+  document.querySelector('h1').textContent = heading;
+}
 //primary function calls
 randomNum();
 //variable presentation
@@ -76,7 +79,8 @@ document.querySelector('.check').addEventListener('click', function () {
     displayMsg('🚫 No Number');
     // win
   } else if (guess === random) {
-    displayMsg('🎉 Correct Number');
+    displayMsg('🎉🥳 Correct Number, SMARTASS');
+    heading('You dropped this 👑');
     secretBoxContent(random);
     //---------------bg
     bgColor('#60b347');
@@ -94,7 +98,8 @@ document.querySelector('.check').addEventListener('click', function () {
       displayMsg(properMsg());
       displayScore(score);
     } else {
-      displayMsg('YOu lost the game');
+      displayMsg('📛 GAME OVER');
+      heading('L0SER HAHA 🤣 L00K AT YOU 🤣 CANT EVEN GUESS A NUMBER');
       displayScore(score);
     }
   }
